@@ -4,8 +4,7 @@
  */
 package comp603;
 
-/**
- *
+/*
  * @author ericklao
  */
 public class Card 
