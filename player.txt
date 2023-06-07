@@ -1,0 +1,4 @@
+Name: erick
+
+Age: 21
+Balance: 1000.0
