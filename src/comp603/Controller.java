@@ -16,6 +16,17 @@ public class Controller {
         this.gui = new GUI(this);
         this.gui.login.setVisible(true);
     }
+    private double userMoney; // Assuming user's money is stored as a double variable
+
+    // Other code in the Controller class
+
+    public double getUserMoney() {
+        return userMoney;
+    }
+
+    public void setUserMoney(double money) {
+        userMoney = money;
+    }
     
     public static void main(String[] args) {
         Controller controller = new Controller();
