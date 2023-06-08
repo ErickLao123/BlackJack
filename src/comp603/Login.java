@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package comp603;
-import comp603.BlackJackGUI;
 
 import javax.swing.JOptionPane;
 
@@ -13,12 +12,16 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    public Controller controller;
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login(Controller controller) {
+        this.controller = controller;
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,12 +35,13 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        BAge = new javax.swing.JTextField();
+        BEnter = new javax.swing.JButton();
+        BName1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        BUsername = new javax.swing.JTextField();
-        BLogin = new javax.swing.JButton();
-        BExit = new javax.swing.JButton();
-        BPassword = new javax.swing.JPasswordField();
-        BShowPassword = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
+        BBalance = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,181 +69,182 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Username");
+        jLabel1.setText("Name");
 
-        jLabel2.setText("Password");
-
-        BUsername.addActionListener(new java.awt.event.ActionListener() {
+        BAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BUsernameActionPerformed(evt);
+                BAgeActionPerformed(evt);
             }
         });
 
-        BLogin.setText("Login");
-        BLogin.addActionListener(new java.awt.event.ActionListener() {
+        BEnter.setText("Enter");
+        BEnter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BLoginActionPerformed(evt);
+                BEnterActionPerformed(evt);
             }
         });
 
-        BExit.setText("Exit");
-        BExit.addActionListener(new java.awt.event.ActionListener() {
+        BName1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BExitActionPerformed(evt);
+                BName1ActionPerformed(evt);
             }
         });
 
-        BPassword.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText("Balance");
+
+        jLabel3.setText("Age");
+
+        BBalance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BPasswordActionPerformed(evt);
+                BBalanceActionPerformed(evt);
             }
         });
 
-        BShowPassword.setText("Show Password");
-        BShowPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BShowPasswordActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel4.setText("Welcome");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 101, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BExit, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(BLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(BPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(BBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(BAge, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BName1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(160, 160, 160)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(BEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BName1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BExit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addComponent(BAge, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(BEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUsernameActionPerformed
+    private void BAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BUsernameActionPerformed
+    }//GEN-LAST:event_BAgeActionPerformed
 
-    private void BLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BLoginActionPerformed
-        // TODO add your handling code here:
-        if (BUsername.getText().equals(""))
+    private void BEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEnterActionPerformed
+        // TODO add your handling code her
+        
+        String input = BName1.getText();
+        
+        if (input.isEmpty() || input.length() > 20)
         {
-            JOptionPane.showMessageDialog(null,"Please enter you username details!");
+            JOptionPane.showMessageDialog(this, "Invalid input! Please enter a string up to 20 characters long.");
+            return;
         }
-        else if(BPassword.getText().equals(""))
+        
+        String ageText = BAge.getText();
+        
+        if (ageText.isEmpty())
         {
-           JOptionPane.showMessageDialog(null,"Please enter you password details!");
-
+            JOptionPane.showMessageDialog(this, "Invalid input! Please enter your age.");
+            return;
         }
-        else if (BUsername.getText().equals("Erick") && BPassword.getText().equals("Password101"))
+        
+        int checkinputge;
+        try 
         {
-            JOptionPane.showMessageDialog(null, "You have Logged in!");
-            
-            BlackJackGUI blackjackGUI = new BlackJackGUI();
-            BlackJackGUI.setVisible(true);
-            this.dispose();
-        }
-        else
+            checkinputge = Integer.parseInt(ageText);
+        } 
+        catch (NumberFormatException e) 
         {
-            JOptionPane.showMessageDialog(null,"You have put the wrong details in!","Message",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Invalid input! Please enter a valid number for your age.");
+            return;
         }
-    }//GEN-LAST:event_BLoginActionPerformed
-
-    private void BExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_BExitActionPerformed
-
-    private void BPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BPasswordActionPerformed
-
-    private void BShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BShowPasswordActionPerformed
-        // TODO add your handling code here:
-        if (BShowPassword.isSelected())
+        
+        int age = Integer.parseInt(ageText);
+        
+        if (age < 21)
         {
-            BPassword.setEchoChar((char)0);
+             JOptionPane.showMessageDialog(this, "You are too young! Goodbye.");
+             System.exit(0);
         }
-        else
+        
+        String binput = BBalance.getText();
+        int balance = 0;
+        while (true) 
         {
-            BPassword.setEchoChar('*');
-        }
-    }//GEN-LAST:event_BShowPasswordActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+            try 
+            {
+                balance = Integer.parseInt(binput);
+                break; // Valid integer input, exit the loop
+            } 
+            catch (NumberFormatException e) 
+            {
+                JOptionPane.showMessageDialog(this, "Invalid input! Please enter a valid integer for balance.");
+                System.exit(0);
+                if (binput == null) 
+                {
+                    JOptionPane.showMessageDialog(null,"You have no money to play! Goodbye");
+                    System.exit(0); // Cancel button pressed, exit the program
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //save user to database in this line
+        this.controller.gui.CPanel.setVisible(true); //switch screen
+        this.setVisible(false); //hide login panel
+        
+        
+    }//GEN-LAST:event_BEnterActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
+    private void BName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BName1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BName1ActionPerformed
+
+    private void BBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBalanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BBalanceActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BExit;
-    private javax.swing.JButton BLogin;
-    private javax.swing.JPasswordField BPassword;
-    private javax.swing.JCheckBox BShowPassword;
-    private javax.swing.JTextField BUsername;
+    private javax.swing.JTextField BAge;
+    private javax.swing.JTextField BBalance;
+    private javax.swing.JButton BEnter;
+    private javax.swing.JTextField BName1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

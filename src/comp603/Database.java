@@ -8,6 +8,8 @@ package comp603;
  *
  * @author GGPC
  */
-public class BlackJackGUI {
-    
+public class Database 
+{
+    //save account user info about the last user 
+    //load account when clicked 
 }
