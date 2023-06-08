@@ -36,6 +36,7 @@ public class CasinoPanel extends javax.swing.JFrame {
         BBlack = new javax.swing.JButton();
         BLook = new javax.swing.JButton();
         BRules = new javax.swing.JButton();
+        BBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +64,13 @@ public class CasinoPanel extends javax.swing.JFrame {
             }
         });
 
+        BBack.setText("Back to Login");
+        BBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,7 +85,10 @@ public class CasinoPanel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(jLabel1))
-                    .addComponent(BRules))
+                    .addComponent(BRules)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(BBack, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,7 +101,9 @@ public class CasinoPanel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BBlack, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BLook, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,14 +130,24 @@ public class CasinoPanel extends javax.swing.JFrame {
     private void BBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBlackActionPerformed
         // TODO add your handling code here:
         //check if user has money
-        //b
-        this.controller.gui.BJPanel.setVisible(true); //switch screen
-        this.setVisible(false); //hide login panel
+    if (controller.getUserMoney() <= 0) {
+            JOptionPane.showMessageDialog(null, "You don't have enough money to play.");
+        } else {
+            this.controller.gui.BJPanel.setVisible(true); // Switch to blackjack panel
+            this.setVisible(false); // Hide login panel
+        }
     }//GEN-LAST:event_BBlackActionPerformed
+
+    private void BBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBackActionPerformed
+        // TODO add your handling code here:
+        this.controller.gui.login.setVisible(true); // Switch to login panel
+        this.setVisible(false); // Hide casino panel
+    }//GEN-LAST:event_BBackActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BBack;
     private javax.swing.JButton BBlack;
     private javax.swing.JButton BLook;
     private javax.swing.JButton BRules;

@@ -36,6 +36,10 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="BRules" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
+                      <Component id="BBack" min="-2" pref="131" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="134" max="32767" attributes="0"/>
           </Group>
@@ -52,7 +56,9 @@
                   <Component id="BBlack" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="BLook" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="131" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="BBack" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace pref="82" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,6 +97,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BRulesActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BBack">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Back to Login"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BBackActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
