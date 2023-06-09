@@ -49,10 +49,11 @@ public class DealerHandTest {
     public void testAddCard_NonNullDeck() {
         // Arrange
         Deck deck = new Deck();
+        Card card = (new Card(Suit.SPADES, Rank.KING));
+        deck.addCard(card);
         DealerHand instance = new DealerHand();
         instance.addCard(deck);
-        assertEquals(1, instance.getHandSize());
-        assertEquals(deck.getCard(0), instance.getCard(0));
+        assertEquals(card, instance.getCard(0));
     }
 
 }

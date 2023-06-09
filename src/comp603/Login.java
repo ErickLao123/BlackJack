@@ -181,13 +181,13 @@ public class Login extends javax.swing.JFrame {
         
         if (input.isEmpty() || input.length() > 20)
         {
-            JOptionPane.showMessageDialog(this, "Invalid input! Please enter a string up to 20 characters long.");
+            JOptionPane.showMessageDialog(this, "Invalid input! Please enter a name only up to 20 characters long.");
             return;
         }
         
         for (char c : input.toCharArray()) {
             if (Character.isDigit(c)) {
-                JOptionPane.showMessageDialog(this, "Invalid input! Name should not contain digits.");
+                JOptionPane.showMessageDialog(this, "Invalid input! Your Name should not contain any digits.");
                 return;
             }
         }
@@ -196,7 +196,7 @@ public class Login extends javax.swing.JFrame {
         
         if (ageText.isEmpty())
         {
-            JOptionPane.showMessageDialog(this, "Invalid input! Please enter your age.");
+            JOptionPane.showMessageDialog(this, "Invalid input! Please enter a number for your age!");
             return;
         }
         
@@ -221,26 +221,24 @@ public class Login extends javax.swing.JFrame {
         
         String binput = BBalance.getText();
         double balance = 0;
-        while (true) 
-        {
-            try 
-            {
-                balance = Integer.parseInt(binput);
-                break; // Valid integer input, exit the loop
-            } 
-            catch (NumberFormatException e) 
-            {
-                JOptionPane.showMessageDialog(this, "Invalid input! Please enter a valid integer for balance.");
-                System.exit(0);
-            }
+        try {
+            balance = Double.parseDouble(binput);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid input! Please enter a valid number for balance.");
+            return;
+        }
+
+        if (balance == 0) {
+            JOptionPane.showMessageDialog(this, "Invalid input! You can't enter with no money!.");
+            return;
         }
         //save user to database in this line
         this.controller.setUserMoney(balance);
-        
+
         this.controller.gui.CPanel.setVisible(true); //switch screen
         this.setVisible(false); //hide login panel
-        
-        
+
+
     }//GEN-LAST:event_BEnterActionPerformed
 
     private void BName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BName1ActionPerformed

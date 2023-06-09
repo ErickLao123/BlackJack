@@ -29,9 +29,11 @@ public class PlayerHand {
     }
     public void clear() 
     {
+        //clear hand by calling the clear() method
         hand.clear();
     }
     public int getHandSize() {
+        //get the current size of the hand by calling deckSize()
         return hand.deckSize();
     }
 

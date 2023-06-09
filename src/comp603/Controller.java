@@ -20,12 +20,11 @@ public class Controller {
     }
     private double userMoney; // Assuming user's money is stored as a double variable
 
-    // Other code in the Controller class
-
+    //get method for usermoney
     public double getUserMoney() {
         return userMoney;
     }
-
+    //set method for user money
     public void setUserMoney(double money) {
         userMoney = money;
     }
@@ -35,7 +34,7 @@ public class Controller {
 
     }
     
-
+    
     public void displayCards(boolean showDealer) {
         //if statement checks if the handsize is more than 0
         if (playerHand.getHandSize() > 0) {
@@ -87,11 +86,12 @@ public class Controller {
         }
         
         if (dealerHand.getHandSize() > 1) {
+            //if showDealer is true it will print out the picture of the hand
             if (showDealer == true)
             {
                 this.gui.BJPanel.getDealerCard2().setText(dealerHand.getCard(1).toString());
             }
-            else
+            else //if show dealer is false it will print out ???
             {
                 this.gui.BJPanel.getDealerCard2().setText("???");
             }

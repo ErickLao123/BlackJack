@@ -140,6 +140,7 @@ public class Deck {
     }
     public void clear()
     {
+        //clears the hand using the clear() method
         cards.clear();
     }
 }

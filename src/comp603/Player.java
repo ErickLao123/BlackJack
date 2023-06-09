@@ -37,6 +37,7 @@ public class Player
     {
         return balance;
     }
+    //set method for balance
     public void setBalance(double balance) 
     {
         this.balance = balance;
