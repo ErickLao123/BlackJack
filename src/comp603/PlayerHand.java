@@ -19,8 +19,22 @@ public class PlayerHand {
     public void drawCard(Deck deck) {
         hand.draw(deck);
     }
-    //
+    
+    public Card getCard(int index) {
+        return hand.getCard(index);
+    }
+
     public int getHandValue() {
         return hand.cardsRank();
     }
+    public void clear() 
+    {
+        hand.clear();
+    }
+    public int getHandSize() {
+        return hand.deckSize();
+    }
+
+
+
 }
