@@ -12,7 +12,7 @@ public class GUI {
     
     public Controller controller;
     public Login login;
-    
+    public Exist exist;
     public CasinoPanel CPanel;
     public BlackJackPanel BJPanel;
     
