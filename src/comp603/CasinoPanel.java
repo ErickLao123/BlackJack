@@ -17,6 +17,7 @@ public class CasinoPanel extends javax.swing.JFrame {
     Controller controller;
     /**
      * Creates new form BackPanel
+     * @param controller
      */
     public CasinoPanel(Controller controller) {
         this.controller = controller;
@@ -129,19 +130,24 @@ public class CasinoPanel extends javax.swing.JFrame {
 
     private void BBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBlackActionPerformed
         // TODO add your handling code here:
-        //check if user has money
-    if (controller.getUserMoney() <= 0) {
+        // Check if the user has enough money
+        if (controller.getUserMoney() > 0) {
+            // User has enough money, allow them to go to the BJPanel
+            this.controller.gui.BJPanel.setVisible(true);
+            this.setVisible(false); //hide login panel
+        } 
+        else 
+        {
+            // User does not have enough money, show an error message
             JOptionPane.showMessageDialog(null, "You don't have enough money to play.");
-        } else {
-            this.controller.gui.BJPanel.setVisible(true); // Switch to blackjack panel
-            this.setVisible(false); // Hide login panel
         }
     }//GEN-LAST:event_BBlackActionPerformed
 
     private void BBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBackActionPerformed
         // TODO add your handling code here:
-        this.controller.gui.login.setVisible(true); // Switch to login panel
-        this.setVisible(false); // Hide casino panel
+        
+       this.controller.gui.login.setVisible(true); //switch screen
+        this.setVisible(false); //hide login panel
     }//GEN-LAST:event_BBackActionPerformed
 
     
