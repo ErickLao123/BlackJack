@@ -138,4 +138,8 @@ public class Deck {
         //returns the total value of the cards in the players hand
         return totalRank;
     }
+    public void clear()
+    {
+        cards.clear();
+    }
 }
