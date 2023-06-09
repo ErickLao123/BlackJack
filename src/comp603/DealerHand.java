@@ -31,4 +31,18 @@ public class DealerHand
     {
         return hand.getCard(0);
     }
+    public void clear()
+    {
+        hand.clear();
+    }
+
+    public Card getCard(int index) {
+        return hand.getCard(index);
+    }
+
+    public int getHandSize() {
+        return hand.deckSize();
+    }
+
+
 }
