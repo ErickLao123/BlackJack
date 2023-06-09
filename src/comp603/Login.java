@@ -42,6 +42,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         BBalance = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        BRestart = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,6 +104,13 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel4.setText("Welcome");
 
+        BRestart.setText("Restart");
+        BRestart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRestartActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,19 +122,21 @@ public class Login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BAge, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BName1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(160, 160, 160)))
+                    .addComponent(BBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BAge, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BName1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(160, 160, 160))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(BRestart)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +160,9 @@ public class Login extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                        .addComponent(BEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(BRestart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BEnter, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
                         .addGap(23, 23, 23))))
         );
 
@@ -171,6 +183,13 @@ public class Login extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "Invalid input! Please enter a string up to 20 characters long.");
             return;
+        }
+        
+        for (char c : input.toCharArray()) {
+            if (Character.isDigit(c)) {
+                JOptionPane.showMessageDialog(this, "Invalid input! Name should not contain digits.");
+                return;
+            }
         }
         
         String ageText = BAge.getText();
@@ -201,7 +220,7 @@ public class Login extends javax.swing.JFrame {
         }
         
         String binput = BBalance.getText();
-        int balance = 0;
+        double balance = 0;
         while (true) 
         {
             try 
@@ -213,14 +232,11 @@ public class Login extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(this, "Invalid input! Please enter a valid integer for balance.");
                 System.exit(0);
-                if (binput == null) 
-                {
-                    JOptionPane.showMessageDialog(null,"You have no money to play! Goodbye");
-                    System.exit(0); // Cancel button pressed, exit the program
-                }
             }
         }
         //save user to database in this line
+        this.controller.setUserMoney(balance);
+        
         this.controller.gui.CPanel.setVisible(true); //switch screen
         this.setVisible(false); //hide login panel
         
@@ -233,7 +249,14 @@ public class Login extends javax.swing.JFrame {
 
     private void BBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBalanceActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_BBalanceActionPerformed
+
+    private void BRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRestartActionPerformed
+        // TODO add your handling code here:
+        this.controller.gui.exist.setVisible(true); //switch screen
+        this.setVisible(false); //hide login panel
+    }//GEN-LAST:event_BRestartActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -241,6 +264,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField BBalance;
     private javax.swing.JButton BEnter;
     private javax.swing.JTextField BName1;
+    private javax.swing.JButton BRestart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
