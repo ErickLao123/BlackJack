@@ -135,6 +135,7 @@ public class CasinoPanel extends javax.swing.JFrame {
             // User has enough money, allow them to go to the BJPanel
             this.controller.gui.BJPanel.setVisible(true);
             this.setVisible(false); //hide login panel
+            this.controller.displayCards(false);
         } 
         else 
         {
@@ -145,7 +146,6 @@ public class CasinoPanel extends javax.swing.JFrame {
 
     private void BBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBackActionPerformed
         // TODO add your handling code here:
-        
        this.controller.gui.login.setVisible(true); //switch screen
         this.setVisible(false); //hide login panel
     }//GEN-LAST:event_BBackActionPerformed

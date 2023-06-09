@@ -51,7 +51,7 @@ public class Deck {
     {
         Collections.shuffle(this.cards);
     }
-    //method to remove a card from the deck
+    //method to remove a card from the deck do 
     public void removeCard(int i)
     {
         this.cards.remove(i);
